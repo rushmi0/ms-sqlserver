@@ -51,3 +51,64 @@ VALUES (1, 'Alice', 'Johnson', 1, '2020-01-15', 55000.00),
 
 
 
+
+CREATE TABLE books
+(
+    book_id        INT PRIMARY KEY IDENTITY(1,1),
+    title          NVARCHAR(100),
+    first_name     NVARCHAR(50),
+    last_name      NVARCHAR(50),
+    genre          NVARCHAR(50),
+    price          DECIMAL(10, 2),
+    published_date DATE
+);
+
+
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Silent Patient', 'Alex', 'Michaelides', 'Thriller', 350.00, '2019-02-05'),
+       ('Atomic Habits', 'James', 'Clear', 'Self-help', 420.00, '2018-10-16'),
+       ('1984', 'George', 'Orwell', 'Dystopian', 299.00, '1949-06-08'),
+       ('To Kill a Mockingbird', 'Harper', 'Lee', 'Classic', 320.00, '1960-07-11'),
+       ('The Alchemist', 'Paulo', 'Coelho', 'Fiction', 280.00, '1988-04-15');
+
+
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('Becoming', 'Michelle', 'Obama', 'Biography', 450.0, '2018-11-13');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('Educated', 'Tara', 'Westover', 'Memoir', 390.0, '2018-02-20');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Midnight Library', 'Matt', 'Haig', 'Fantasy', 360.0, '2020-08-13');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('Sapiens', 'Yuval', 'Noah Harari', 'History', 500.0, '2011-06-04');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Power of Now', 'Eckhart', 'Tolle', 'Spirituality', 340.0, '1997-08-19');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('Dune', 'Frank', 'Herbert', 'Science Fiction', 410.0, '1965-08-01');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Subtle Art of Not Giving a F*ck', 'Mark', 'Manson', 'Self-help', 370.0, '2016-09-13');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Book Thief', 'Markus', 'Zusak', 'Historical Fiction', 330.0, '2005-03-14');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Catcher in the Rye', 'J.D.', 'Salinger', 'Classic', 310.0, '1951-07-16');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('Rich Dad Poor Dad', 'Robert', 'Kiyosaki', 'Finance', 390.0, '1997-04-01');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Hobbit', 'J.R.R.', 'Tolkien', 'Fantasy', 360.0, '1937-09-21');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('Thinking, Fast and Slow', 'Daniel', 'Kahneman', 'Psychology', 460.0, '2011-10-25');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Great Gatsby', 'F. Scott', 'Fitzgerald', 'Classic', 300.0, '1925-04-10');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Road', 'Cormac', 'McCarthy', 'Post-apocalyptic', 340.0, '2006-09-26');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Four Agreements', 'Don Miguel', 'Ruiz', 'Spirituality', 280.0, '1997-11-07');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Silent Patient', 'Alex', 'Michaelides', 'Thriller', 350.0, '2019-02-05');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('Atomic Habits', 'James', 'Clear', 'Self-help', 420.0, '2018-10-16');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('1984', 'George', 'Orwell', 'Dystopian', 299.0, '1949-06-08');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('To Kill a Mockingbird', 'Harper', 'Lee', 'Classic', 320.0, '1960-07-11');
+INSERT INTO books (title, first_name, last_name, genre, price, published_date)
+VALUES ('The Alchemist', 'Paulo', 'Coelho', 'Fiction', 280.0, '1988-04-15');
