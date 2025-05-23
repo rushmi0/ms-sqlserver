@@ -35,6 +35,10 @@ CREATE TABLE grades
 );
 
 
+SELECT * FROM courses;
+SELECT * FROM grades;
+SELECT * FROM students;
+
 
 INSERT INTO students(first_name, last_name, gender) VALUES('tj', 'adams', 'male');
 INSERT INTO students(first_name, last_name) VALUES('christine', 'adams');
