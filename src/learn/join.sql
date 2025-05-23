@@ -47,7 +47,7 @@ SELECT name
 FROM sys.foreign_keys
 WHERE parent_object_id = OBJECT_ID('enrollments');
 
-ALTER TABLE enrollments DROP CONSTRAINT FK__enrollmen__stude__49C3F6B7;
+-- ALTER TABLE enrollments DROP CONSTRAINT FK__enrollmen__stude__49C3F6B7;
 
 
 -- ข้อมูลการลงทะเบียนเรียน
