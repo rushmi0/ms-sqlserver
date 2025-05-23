@@ -1,9 +1,8 @@
-
 services:
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: sqlserver
+    container_name: ms-db
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Sql@Min123

@@ -1,2 +1,3 @@
-CREATE DATABASE my_db;
-USE my_db;
+CREATE DATABASE [my_db]; GO
+
+USE my_db; GO
