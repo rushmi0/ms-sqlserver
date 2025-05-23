@@ -7,7 +7,7 @@ FROM students;
 
 --Find total number of students by gender
 
-SELECT COUNT(gender) AS 'student by gender', ISNULL(gender, 'unknown') AS gender
+SELECT COUNT(student_id) AS 'student by gender', ISNULL(gender, 'unknown') AS gender
 FROM students
 GROUP BY gender;
 
