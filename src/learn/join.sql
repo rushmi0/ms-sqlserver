@@ -41,12 +41,22 @@ VALUES (101, 'Database Systems', 'Dr. Smith'),
        (102, 'Calculus', 'Dr. Johnson'),
        (103, 'Physics I', 'Dr. Brown');
 
+
+
+SELECT name
+FROM sys.foreign_keys
+WHERE parent_object_id = OBJECT_ID('enrollments');
+
+ALTER TABLE enrollments DROP CONSTRAINT FK__enrollmen__stude__49C3F6B7;
+
+
 -- ข้อมูลการลงทะเบียนเรียน
 INSERT INTO enrollments (enrollment_id, student_id, course_id, grade)
 VALUES (1, 1, 101, 'A'),
        (2, 2, 101, 'B'),
        (3, 2, 102, 'A'),
-       (4, 3, 103, 'B');
+       (4, 3, 103, 'B'),
+       (6, 99, 102, 'B');
 
 
 
