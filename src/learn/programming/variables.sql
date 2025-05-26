@@ -38,7 +38,7 @@ PRINT 'MSSQL';
 
 DECLARE @a FLOAT;
 SET @a = dbo.fn_CompoundInterest(10000, 0.05, 10);
-PRINT @a; -- 16288.9
+SELECT @a AS [Result of Interest]; -- 16288.9
 
 PRINT CAST(ROUND(@a, 2) AS VARCHAR(20));
 
