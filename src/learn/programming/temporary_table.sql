@@ -32,3 +32,23 @@ WHERE SellEndDate IS NOT NULL;
 
 SELECT * FROM #TempTable2;
 
+
+----
+
+
+CREATE FUNCTION fnMathSummary (
+    @a INT,
+    @b INT
+)
+    RETURNS TABLE
+    AS
+RETURN (
+    SELECT
+        NumberA = @a,
+        NumberB = @b,
+        SumAB   = @a + @b,
+        MultiplyAB = @a * @b
+);
+
+SELECT * FROM fnMathSummary(10, 5);
+
