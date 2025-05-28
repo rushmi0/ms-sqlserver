@@ -13,6 +13,8 @@ WHERE Name LIKE '%Thin%';
 SELECT * FROM #TempName;
 
 
+-----
+
 IF OBJECT_ID('tempdb..#TempTable2') IS NOT NULL
 	DROP TABLE #TempName
 GO
