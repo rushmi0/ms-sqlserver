@@ -190,5 +190,5 @@ END;
 
 
 SELECT * FROM [dbo].[multiply_point](@Gy_dec);
-EXEC [dbo].[multiply_point](7, 123456, 789012);
+SELECT * FROM [dbo].[multiply_point](7, 123456, 789012);
 
