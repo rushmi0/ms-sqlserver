@@ -73,6 +73,8 @@ IF OBJECT_ID('dbo.double_point', 'FN') IS NOT NULL
     DROP FUNCTION dbo.double_point;
 GO
 --- #########################################################
+
+-- Table-Valued Function (TVF)
 ALTER FUNCTION [dbo].[double_point](
     @point_X BIGINT,
     @point_Y BIGINT
