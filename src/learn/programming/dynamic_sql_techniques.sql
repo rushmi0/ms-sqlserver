@@ -61,7 +61,7 @@ EXEC sp_table_variable '[Production].[Product]', 3
 EXEC sp_table_variable '[HumanResources].[Employee]', 10
 
 
--- Dynamic SQL and Stored Procedures with param option
+-- # Dynamic SQL and Stored Procedures with param option
 CREATE PROC sp_op_table_variable
 (
     @TName NVARCHAR(128),
@@ -88,4 +88,18 @@ end
 
 EXEC sp_op_table_variable '[HumanResources].[Employee]'
 EXEC sp_op_table_variable '[HumanResources].[Employee]', 3
+
+
+
+-- # sp_executesql parameters
+
+EXEC sp_executesql
+    N'SELECT
+            e.BusinessEntityID, P.FirstName, P.LastName
+        FROM HumanResources.Employee AS e
+            INNER JOIN Person.Person P on P.BusinessEntityID = e.BusinessEntityID
+        WHERE e.BusinessEntityID > @BusinessEID AND P.FirstName LIKE @FirstLetter + ''%'''
+        , N'@BusinessEID INT, @FirstLetter VARCHAR(3)'
+        ,@BusinessEID = 200
+        ,@FirstLetter = 'A';
 
