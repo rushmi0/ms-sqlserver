@@ -42,7 +42,7 @@ FROM
     Sales_CTE
         INNER JOIN Sales_Quota_CTE
                    ON Sales_Quota_CTE.BusinessEntityID = Sales_CTE.SalesPersonID   -- เชื่อมด้วยรหัสพนักงาน
-                       AND Sales_CTE.SaleYear = Sales_Quota_CTE.SalesQuotaYear         -- และปีต้องตรงกัน
+                       AND Sales_CTE.SaleYear = Sales_Quota_CTE.SalesQuotaYear     -- และปีต้องตรงกัน
 ORDER BY
     SalesPersonID,
     SaleYear;                 -- เรียงลำดับผลลัพธ์ตามพนักงานและปี
