@@ -35,3 +35,24 @@ SET @NumberString = CAST(@Number AS NVARCHAR(4));
 SET @SQLString = 'SELECT TOP ' + @NumberString + ' * FROM [Production].[Product] ORDER BY SellStartDate DESC';
 
 EXEC sp_executesql @SQLString;
+
+
+-- # Dynamic SQL and Stored Procedures
+
+CREATE PROC sp_table_variable
+(
+    @TName NVARCHAR(128)
+)
+AS
+BEGIN
+
+    DECLARE @SQLString NVARCHAR(MAX);
+
+    SET @SQLString = N'SELECT * FROM ' + @TName;
+
+    EXEC sp_executesql @SQLString;
+
+end
+
+EXEC sp_table_variable '[Production].[Product]'
+EXEC sp_table_variable '[HumanResources].[Employee]'
