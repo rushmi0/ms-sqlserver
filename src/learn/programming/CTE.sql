@@ -76,37 +76,3 @@ SELECT
 FROM ItemCounts
 
 
--- # Multiple CTE
-WITH SalesTotal AS (
-    SELECT
-        SalesPersonID,
-        SUM(TotalDue) AS TotalSales
-    FROM Sales.SalesOrderHeader
-    WHERE SalesPersonID IS NOT NULL
-    GROUP BY SalesPersonID
-),
-SalesOrderCount AS (
-    SELECT
-        SalesPersonID,
-        COUNT(SalesOrderID) AS OrderCount
-    FROM Sales.SalesOrderHeader
-    WHERE SalesPersonID IS NOT NULL
-    GROUP BY SalesPersonID
-),
-SalesAverage AS (
-    SELECT
-        s.SalesPersonID,
-        s.TotalSales,
-        o.OrderCount,
-        CAST(s.TotalSales AS DECIMAL(10,2)) / o.OrderCount AS AvgPerOrder
-    FROM SalesTotal s
-    JOIN SalesOrderCount o ON s.SalesPersonID = o.SalesPersonID
-)
-SELECT
-    SalesPersonID,
-    TotalSales,
-    OrderCount,
-    AvgPerOrder
-FROM SalesAverage
-WHERE AvgPerOrder > 5000
-ORDER BY AvgPerOrder DESC;
