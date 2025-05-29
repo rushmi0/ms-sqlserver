@@ -38,21 +38,54 @@ EXEC sp_executesql @SQLString;
 
 
 -- # Dynamic SQL and Stored Procedures
-
 CREATE PROC sp_table_variable
 (
-    @TName NVARCHAR(128)
+    @TName NVARCHAR(128),
+    @Number INT
 )
 AS
 BEGIN
 
     DECLARE @SQLString NVARCHAR(MAX);
+    DECLARE @NumberString NVARCHAR(6);
 
-    SET @SQLString = N'SELECT * FROM ' + @TName;
+    SET @NumberString = CAST(@Number AS NVARCHAR(6))
+
+    SET @SQLString = N'SELECT TOP ' + @NumberString + ' * FROM ' + @TName;
 
     EXEC sp_executesql @SQLString;
 
 end
 
-EXEC sp_table_variable '[Production].[Product]'
-EXEC sp_table_variable '[HumanResources].[Employee]'
+EXEC sp_table_variable '[Production].[Product]', 3
+EXEC sp_table_variable '[HumanResources].[Employee]', 10
+
+
+-- Dynamic SQL and Stored Procedures with param option
+CREATE PROC sp_op_table_variable
+(
+    @TName NVARCHAR(128),
+    @Number INT = NULL
+)
+AS
+BEGIN
+
+    DECLARE @SQLString NVARCHAR(128);
+
+    IF @Number IS NOT NULL
+        BEGIN
+            DECLARE @NumberString NVARCHAR(8);
+            SET @NumberString = CAST(@Number AS NVARCHAR(8));
+            SET @SQLString = N'SELECT TOP ' + @NumberString + ' * FROM ' + @TName;
+        end
+    ELSE
+        BEGIN
+            SET @SQLString = N'SELECT * FROM ' + @TName;
+        end
+
+    EXEC sp_executesql @SQLString;
+end
+
+EXEC sp_op_table_variable '[HumanResources].[Employee]'
+EXEC sp_op_table_variable '[HumanResources].[Employee]', 3
+
