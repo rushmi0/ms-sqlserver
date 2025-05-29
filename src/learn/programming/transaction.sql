@@ -31,3 +31,13 @@ COMMIT -- COMMIT TRAN, COMMIT TRANSACTION
 -- ยกเลิกการเปลี่ยนแปลง
 ROLLBACK TRANSACTION
 
+
+-- #Nmaine Transaction
+BEGIN TRANSACTION UpdateJobTitle
+
+UPDATE HumanResources.Employee
+SET JobTitle = 'DevOps Engineer'
+WHERE BusinessEntityID = 268;
+
+
+
