@@ -36,3 +36,16 @@ WHERE DepartmentID = 7;
 -- Trigger จะทำงานเช่นกัน
 DELETE FROM HumanResources.Department
 WHERE GroupName = 'Data Science';
+
+
+
+-- # Trigger modification
+ALTER TRIGGER HumanResources.DepartmentModified
+    ON HumanResources.Department
+    AFTER INSERT, UPDATE, DELETE
+    AS
+BEGIN
+    PRINT 'A change corrected to the [HumanResources].[Department] table'
+END
+GO
+
