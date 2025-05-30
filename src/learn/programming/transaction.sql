@@ -157,5 +157,21 @@ ROLLBACK TRAN Tx1
 
 
 
---
+-- # Making use of save Points
+-- เริ่มต้น transaction หลักชื่อ Tx1
+BEGIN TRAN Tx1
+PRINT @@TRANCOUNT;
+
+    -- สร้าง savepoint ชื่อ SaveTx2 เพื่อให้สามารถ rollback กลับมาที่จุดนี้ได้
+    SAVE TRAN SaveTx2
+        PRINT @@TRANCOUNT;
+
+    -- ย้อนกลับไปยังจุด savepoint SaveTx2 (ไม่ rollback ทั้ง transaction)
+    ROLLBACK TRAN SaveTx2
+
+    PRINT @@TRANCOUNT;
+
+-- Commit ธุรกรรมหลัก (Tx1) — ข้อมูลที่ไม่ถูก rollback จะถูกบันทึก
+COMMIT TRAN
+
 
