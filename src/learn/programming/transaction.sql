@@ -99,3 +99,24 @@ ELSE
         PRINT @NameNameData + ' was added to the books table.'
     END
 
+
+-- # Error handling
+BEGIN TRY
+    BEGIN TRAN AddBook
+
+    INSERT INTO dbo.books (book_name, sold_copies)
+    VALUES ('book_7', 77);
+
+    UPDATE books
+    SET sold_copies = 'Performance Optimization'
+    WHERE book_name = 'book_7';
+
+    COMMIT TRAN ;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRAN AddBook;
+    PRINT 'Adding new book failed.'
+END CATCH
+
+SELECT * FROM dbo.books WHERE book_name = 'book_7';
+
