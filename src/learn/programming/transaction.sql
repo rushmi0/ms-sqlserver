@@ -120,3 +120,42 @@ END CATCH
 
 SELECT * FROM dbo.books WHERE book_name = 'book_7';
 
+
+-- # Nested Transaction Basics
+-- เริ่มต้น transaction หลักชื่อ Tx1
+BEGIN TRAN Tx1
+    PRINT @@TRANCOUNT;
+
+    -- เริ่ม transaction ซ้อน (nested) ชื่อ Tx2
+    BEGIN TRAN Tx2
+        PRINT @@TRANCOUNT;
+    -- ทำการ commit ธุรกรรม Tx2 (ลดระดับธุรกรรมลง 1 แต่ยังไม่ commit จริงทั้งหมด)
+    COMMIT TRAN Tx2
+
+    PRINT @@TRANCOUNT;
+-- ทำการ commit ธุรกรรม Tx1 (ปิดธุรกรรมทั้งหมด และ commit จริงไปที่ฐานข้อมูล)
+COMMIT TRAN Tx1
+
+
+
+-- เริ่มต้น Transaction ชื่อ Tx1
+BEGIN TRAN Tx1
+    PRINT @@TRANCOUNT;  -- แสดงผล = 1 (เปิด transaction ระดับที่ 1)
+
+    -- เริ่ม nested transaction (ไม่มีชื่อ)
+    BEGIN TRAN
+        PRINT @@TRANCOUNT;  -- แสดงผล = 2 (เปิด transaction ซ้อนอีกระดับ)
+
+    -- Commit เฉพาะ nested transaction
+    COMMIT TRAN
+
+    PRINT @@TRANCOUNT;  -- แสดงผล = 1 (เหลือ transaction ระดับนอกสุดเท่านั้น)
+
+-- Rollback ย้อนกลับทั้งหมดของ Tx1 รวมถึง nested ที่เคย commit ไปแล้วด้วย
+ROLLBACK TRAN Tx1
+-- หลังจาก Rollback, @@TRANCOUNT = 0 (ไม่มี transaction คงอยู่แล้ว)
+
+
+
+--
+
